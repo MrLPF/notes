@@ -152,7 +152,6 @@ min(成绩) over (order by 学号) as current_min
 from 班级表;
 ```
 
-```
 得到结果：
 
 ![](C:\Users\basic\AppData\Roaming\marktext\images\2022-01-19-14-09-01-image.png)
@@ -179,7 +178,7 @@ from 班级表;
 
 partition子句可是省略，省略就是不指定分组，结果如下，只是按成绩由高到低进行了排序：
 
-​```sql```
+```sql
 select *, rank() over (order by 成绩 desc) as ranking from 班级表
 ```
 
@@ -245,8 +244,8 @@ from
 **)
 where datediff(now(),t.log_time)<=30
 group by user_id**
-
 ```
+
 **作为窗口函数使用的聚合函数**
 
 所有的聚合函数都能用作窗口函数，其语法和专用窗口函数完全相同。但大家可能对所能得到的结果还没有一个直观的印象，所以我们还是通过具体的示例来学习。
@@ -374,7 +373,7 @@ DENSE_RANK():并列排序，不跳过重复序号——1、1、2
 
 
 
-```sql```
+```sql
 select date,count(*)
 from(
  select user_id
@@ -389,7 +388,7 @@ group by date;
 
 2.统计用户行为序列为A-B-D的用户数,其中:A-B之间可以有任何其他浏览记录(如C,E等),B-D之间除了C记录可以有任何其他浏览记录(如A,E等)
 
-​```sql
+```sql
 select count(*)
 from(
         select user_id,droup_concat(opr_id) ubp
